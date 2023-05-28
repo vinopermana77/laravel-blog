@@ -18,10 +18,6 @@ use Illuminate\Support\Facades\Route;
 // Homepage
 Route::get('/', [HomeController::class,'homepage']);
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
 // Auth admin and user
 Route::get('/home', [HomeController::class,'index'])->middleware('auth')->name('home');
 
