@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Add Post
+// Create Post
 Route::get('/post_page', [AdminController::class,'post_page'])->name('post_page');
 Route::post('/create_post', [AdminController::class,'create_post'])->name('create_post');
 
