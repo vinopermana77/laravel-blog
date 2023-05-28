@@ -18,10 +18,6 @@ use Illuminate\Support\Facades\Route;
 // Homepage
 Route::get('/', [HomeController::class,'homepage']);
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
 // Auth admin and user
 Route::get('/home', [HomeController::class,'index'])->middleware('auth')->name('home');
 
@@ -32,7 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Add Post
+// Create Post
 Route::get('/post_page', [AdminController::class,'post_page'])->name('post_page');
 Route::post('/create_post', [AdminController::class,'create_post'])->name('create_post');
 
