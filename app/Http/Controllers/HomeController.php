@@ -15,7 +15,7 @@ class HomeController extends Controller
 
             // Jika login sebagai user maka tampilkan halaman dashboard
             if ($usertype=='user') {
-                return view('dashboard');
+                return view('home.homepage');
             }
             // Jika login sebagai admin maka tampilkan halaman home
             else if ($usertype=='admin') {

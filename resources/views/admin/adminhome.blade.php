@@ -1,17 +1,26 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Admin Dashboard') }}
-        </h2>
-    </x-slot>
+<!DOCTYPE html>
+<html>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in as Admin") }}
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+<head>
+    @include('admin.admincss')
+</head>
+
+<body>
+    {{-- Header --}}
+    @include('admin.header')
+    {{-- Header --}}
+
+    <div class="d-flex align-items-stretch">
+        <!-- Sidebar Navigation-->
+        @include('admin.sidebar')
+        <!-- Sidebar Navigation end-->
+        {{-- Main Body --}}
+        @include('admin.body')
+        {{-- Main Body --}}
+
+        {{-- Footer --}}
+        @include('admin.footer')
+        {{-- Footer --}}
+</body>
+
+</html>
