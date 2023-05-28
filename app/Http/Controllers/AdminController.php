@@ -22,6 +22,7 @@ class AdminController extends Controller
         $name = $user->name;
         $usertype = $user->usertype;
 
+        // Menyimpan data
         $post = new Post;
         $post->title = $request->title;
         $post->description = $request->description;
