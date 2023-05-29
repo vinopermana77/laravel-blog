@@ -21,6 +21,7 @@
         {{-- Footer --}}
         @include('admin.footer')
         {{-- Footer --}}
+    </div>
 </body>
 
 </html>

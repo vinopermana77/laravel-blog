@@ -6,6 +6,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     {{-- Header --}}
     @include('admin.header')
     {{-- Header --}}
@@ -70,12 +71,12 @@
                                                     <a href="posts/{{ $post->id }}/edit"
                                                         class="btn btn-success btn-sm">Edit</i>
                                                     </a>
-                                                    <form onsubmit="return confirm('Are you sure delete this?')"
-                                                        action="{{ url('delete', $post->id) }}" method="post">
+                                                    <form action="{{ url('delete', $post->id) }}" method="post">
                                                         @csrf
                                                         @method('delete')
                                                         <button type="submit"
-                                                            class="btn btn-danger btn-sm">Delete</button>
+                                                            class="confirm_delete btn btn-danger btn-sm"
+                                                            id="delete">Delete</button>
                                                     </form>
                                                 </div>
                                             </td>
@@ -94,6 +95,25 @@
         {{-- Footer --}}
         @include('admin.footer')
         {{-- Footer --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+        <script type="text/javascript">
+            $('.confirm_delete').click(function(event) {
+            let form =  $(this).closest("form");
+            event.preventDefault();
+            swal({
+                title: `Are you sure you want to delete this post?`,
+                text: "If you delete this, it will be gone forever.",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                form.submit();
+                }
+            });
+        });
+        </script>
 </body>
 
 </html>

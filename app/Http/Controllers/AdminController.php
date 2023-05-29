@@ -6,7 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateRequest;
 use Illuminate\Support\Facades\Auth;
-use Cviebrock\EloquentSluggable\Services\SlugService;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminController extends Controller
 {
@@ -42,7 +42,8 @@ class AdminController extends Controller
     
         $post->save();
 
-        return redirect()->route('show_posts')->with('message', 'Post Created Successfully');
+        Alert::success('Success', 'Post Created Successfully');
+        return redirect()->route('show_posts');
     }
 
     public function show_posts()
@@ -55,6 +56,8 @@ class AdminController extends Controller
     {
         $post = Post::find($id);
         $post->delete();
-        return redirect()->back()->with('message', 'Post Deleted Successfully');
+        
+        Alert::success('Success', 'Deleted Post Successfully');
+        return redirect()->back();
     }
 }
