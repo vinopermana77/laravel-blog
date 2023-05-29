@@ -11,14 +11,11 @@
     <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
     <ul class="list-unstyled">
         <li class="active"><a href="{{ route('home') }}"> <i class="icon-home"></i>Home </a></li>
-        <li><a href="{{ url('show_posts') }}"> <i class="fa fa-bar-chart"></i>Posts </a></li>
-        <li><a href="forms.html"> <i class="icon-padnote"></i>Forms </a></li>
         <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i
-                    class="icon-windows"></i>Example dropdown </a>
+                    class="icon-windows"></i>Posts</a>
             <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                <li><a href="#">Page</a></li>
-                <li><a href="#">Page</a></li>
-                <li><a href="#">Page</a></li>
+                <li><a href="{{ route('posts.index') }}"> <i class="fa fa-bar-chart"></i>All Posts </a></li>
+                <li><a href="{{ route('posts.create') }}"> <i class="fa fa-bar-chart"></i>Create Post </a></li>
             </ul>
         </li>
         <li><a href="login.html"> <i class="icon-logout"></i>Login page </a></li>

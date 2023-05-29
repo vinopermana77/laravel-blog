@@ -5,30 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateRequest;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class AdminController extends Controller
+class AdminsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $posts = Post::all();
         return view('admin.index', compact('posts'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('admin.create_post');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(CreateRequest $request)
     {
         // Mengambil data user yang login
@@ -57,58 +49,21 @@ class AdminController extends Controller
         $post->save();
 
         Alert::success('Success', 'Post Created Successfully');
-        return redirect()->route('posts.index');
+        return redirect()->route('index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Request $id)
     {
         $post = Post::find($id);
         return view('admin.edit_post', compact('post'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        // Menyimpan data
-        $post = Post::find($id);
-        $post->title = $request->title;
-        $post->description = $request->description;
-        $image = $request->image;
-
-        if ($image) {
-            $imageName = time().'.'.$request->image->extension();
-            $request->image->move(public_path('images'), $imageName);
-            $post->image = $imageName;
-        }
-
-        $post->save();
-
-        Alert::success('Success', 'Post Updated Successfully');
-        return redirect()->route('posts.index');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         $post = Post::find($id);
         $post->delete();
         
-        Alert::success('Success', 'Post Deleted Successfully');
+        Alert::success('Success', 'Deleted Post Successfully');
         return redirect()->back();
     }
 }

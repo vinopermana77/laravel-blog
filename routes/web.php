@@ -29,10 +29,13 @@ Route::middleware('auth')->group(function () {
 });
 
 // Create Post
-Route::get('/create', [AdminController::class,'create'])->name('create');
-Route::post('/store', [AdminController::class,'store'])->name('store');
-Route::get('/show_posts', [AdminController::class,'show_posts'])->name('show_posts');
-Route::delete('/delete/{id}', [AdminController::class,'destroy'])->name('destroy');
+// Route::get('/create', [AdminsController::class,'create'])->name('create');
+// Route::post('/store', [AdminsController::class,'store'])->name('store');
+// Route::get('/index', [AdminsController::class,'index'])->name('index');
+// Route::get('/destroy/{id}', [AdminsController::class,'destroy'])->name('destroy');
+// Route::get('/edit/{id}', [AdminsController::class,'edit'])->name('edit');
 
+// Resource
+Route::resource('/posts', AdminController::class);
 
 require __DIR__.'/auth.php';

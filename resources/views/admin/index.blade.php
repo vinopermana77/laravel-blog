@@ -6,7 +6,6 @@
 </head>
 
 <body>
-    @include('sweetalert::alert')
     {{-- Header --}}
     @include('admin.header')
     {{-- Header --}}
@@ -38,7 +37,6 @@
                             <div class="title">
                                 <strong>All data posts</strong>
                             </div>
-                            <a href="{{ url('create') }}" class="btn btn-danger">Add Post</a>
                             <div class="table-responsive">
                                 <table class="table table-striped table-hover">
                                     <thead>
@@ -66,17 +64,16 @@
                                             <td>{{$post->post_status }}</td>
                                             <td>{{$post->usertype }}</td>
                                             <td>
-                                                <div class="d-flex gap-3">
-                                                    <a href="post/{{ $post->id }}" class=" btn btn-info btn-sm">Show</a>
+                                                <div class="d-flex align-items-center">
+                                                    <a href="{{ url($post->id) }}" class=" btn btn-info">Show</a>
                                                     <a href="posts/{{ $post->id }}/edit"
-                                                        class="btn btn-success btn-sm">Edit</i>
+                                                        class="btn btn-success m-3">Edit</i>
                                                     </a>
-                                                    <form action="{{ url('delete', $post->id) }}" method="post">
+                                                    <form action="/posts/{{ $post->id }}" method="post">
                                                         @csrf
-                                                        @method('delete')
+                                                        @method('DELETE')
                                                         <button type="submit"
-                                                            class="confirm_delete btn btn-danger btn-sm"
-                                                            id="delete">Delete</button>
+                                                            class="btn btn-danger ms-2 confirm_delete">Delete</button>
                                                     </form>
                                                 </div>
                                             </td>
