@@ -11,8 +11,7 @@
     <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
     <ul class="list-unstyled">
         <li class="active"><a href="{{ route('home') }}"> <i class="icon-home"></i>Home </a></li>
-        <li><a href="{{ url('post_page') }}"> <i class="icon-grid"></i>Create Post </a></li>
-        <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts </a></li>
+        <li><a href="{{ url('show_posts') }}"> <i class="fa fa-bar-chart"></i>Posts </a></li>
         <li><a href="forms.html"> <i class="icon-padnote"></i>Forms </a></li>
         <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i
                     class="icon-windows"></i>Example dropdown </a>

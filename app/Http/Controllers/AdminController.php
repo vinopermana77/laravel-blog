@@ -34,14 +34,19 @@ class AdminController extends Controller
         // Uploud image
         $image = $request->image;
         if ($image) {
-            $imageName = time().'.'.$image->getClientOriginalExtension();
-            $newNameImage = $request->title.'.'.$imageName; // Membuat variable gambar baru
-            $request->file('image')->storeAs('postImage', $newNameImage); // Tempat folder image
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
             $post->image = $imageName;
         }
     
         $post->save();
 
         return redirect()->back()->with('message', 'Post Created Successfully');
+    }
+
+    public function show_posts()
+    {
+        $posts = Post::all();
+        return view('admin.show_posts', compact('posts'));
     }
 }
