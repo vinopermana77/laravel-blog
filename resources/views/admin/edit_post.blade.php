@@ -50,7 +50,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="description" class="form-label">Description</label>
-                                <textarea class="form-control" id="description" name="description"
+                                <textarea class="form-control" id="summernote" name="description"
                                     rows="3">{{ $post->description }}</textarea>
                             </div>
                             <div class="mb-3">
@@ -86,6 +86,15 @@
                     reader.readAsDataURL(input.files[0]);
                 }
             }
+        </script>
+
+        <!-- summernote css/js -->
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+        <script type="text/javascript">
+            $('#summernote').summernote({
+        height: 200
+        });
         </script>
 </body>
 

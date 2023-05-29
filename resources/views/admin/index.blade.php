@@ -56,7 +56,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{$post->title }}</td>
-                                            <td>{{ Str::limit($post->description, 50)}}</td>
+                                            <td>{!! Str::limit($post->description, 50) !!}</td>
                                             <td>
                                                 <img src="images/{{ $post->image }}" style="width: 150px;" alt="Image">
                                             </td>
