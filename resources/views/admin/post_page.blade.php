@@ -36,16 +36,9 @@
                 </div>
                 @endif
                 {{-- Notif Validation --}}
-
-                @if (session()->has('message'))
-                <div class="alert alert-success">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
-                    {{session()->get('message'); }}
-                </div>
-                @endif
                 <div class="block">
                     <div class="block-body">
-                        <form action="{{ url('create_post') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ url('store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label for="title" class="form-label">Title</label>

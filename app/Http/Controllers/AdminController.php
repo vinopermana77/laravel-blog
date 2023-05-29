@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateRequest;
 use Illuminate\Support\Facades\Auth;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class AdminController extends Controller
 {
-    public function post_page()
+    public function create()
     {
         return view('admin.post_page');
     }
 
-    public function create_post(CreateRequest $request)
+    public function store(CreateRequest $request)
     {
         // Mengambil data user yang login
         $user = Auth()->user();
@@ -41,12 +42,19 @@ class AdminController extends Controller
     
         $post->save();
 
-        return redirect()->back()->with('message', 'Post Created Successfully');
+        return redirect()->route('show_posts')->with('message', 'Post Created Successfully');
     }
 
     public function show_posts()
     {
         $posts = Post::all();
         return view('admin.show_posts', compact('posts'));
+    }
+
+    public function destroy($id)
+    {
+        $post = Post::find($id);
+        $post->delete();
+        return redirect()->back()->with('message', 'Post Deleted Successfully');
     }
 }

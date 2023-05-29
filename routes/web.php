@@ -29,9 +29,10 @@ Route::middleware('auth')->group(function () {
 });
 
 // Create Post
-Route::get('/post_page', [AdminController::class,'post_page'])->name('post_page');
-Route::post('/create_post', [AdminController::class,'create_post'])->name('create_post');
+Route::get('/create', [AdminController::class,'create'])->name('create');
+Route::post('/store', [AdminController::class,'store'])->name('store');
 Route::get('/show_posts', [AdminController::class,'show_posts'])->name('show_posts');
+Route::delete('/delete/{id}', [AdminController::class,'destroy'])->name('destroy');
 
 
 require __DIR__.'/auth.php';
