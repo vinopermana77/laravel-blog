@@ -18,6 +18,9 @@
 <link rel="stylesheet" href="adminpanel/css/custom.css">
 <!-- Favicon-->
 <link rel="shortcut icon" href="adminpanel/img/favicon.ico">
+<!-- summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 <!-- Tweaks for older IEs-->
 <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
