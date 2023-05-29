@@ -17,7 +17,11 @@
 
         <div class="page-content">
             <!-- Basic Form-->
-            <div class="container">
+            <div class="container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('show_posts') }}">Tables</a></li>
+                    <li class="breadcrumb-item active">Create Post </li>
+                </ul>
                 <div class="header mt-5 mb-5 text-center text-white">
                     <h1>Create Post</h1>
                 </div>

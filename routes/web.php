@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
 // Create Post
 Route::get('/post_page', [AdminController::class,'post_page'])->name('post_page');
 Route::post('/create_post', [AdminController::class,'create_post'])->name('create_post');
+Route::get('/show_posts', [AdminController::class,'show_posts'])->name('show_posts');
 
 
 require __DIR__.'/auth.php';
