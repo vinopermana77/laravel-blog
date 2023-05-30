@@ -1,7 +1,7 @@
 <header class="navigation">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light px-0">
-            <a class="navbar-brand order-1 py-0" href="blog/index.html">
+            <a class="navbar-brand order-1 py-0" href="{{ url('/') }}">
                 <img loading="prelaod" decoding="async" class="img-fluid" src="blog/images/logo.png"
                     alt="Reporter Hugo">
             </a>
@@ -44,9 +44,11 @@
                         </div>
                     </li>
                     @else
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('login') }}">Login</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">Login</a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('register') }}">Register</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">Register</a>
                     </li>
                     @endauth
                     @endif

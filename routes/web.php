@@ -20,6 +20,9 @@ Route::get('/', [HomeController::class,'homepage']);
 
 // Auth admin and user
 Route::get('/home', [HomeController::class,'index'])->middleware('auth')->name('home');
+Route::get('/post_detail/{id}', [HomeController::class,'postDetail'])->name('postDetail');
+// Resource Admin
+Route::resource('/posts', AdminController::class);
 
 // Setting Profile
 Route::middleware('auth')->group(function () {
@@ -35,7 +38,5 @@ Route::middleware('auth')->group(function () {
 // Route::get('/destroy/{id}', [AdminsController::class,'destroy'])->name('destroy');
 // Route::get('/edit/{id}', [AdminsController::class,'edit'])->name('edit');
 
-// Resource
-Route::resource('/posts', AdminController::class);
 
 require __DIR__.'/auth.php';
