@@ -10,13 +10,13 @@
                         @foreach ($posts as $post)
                         <div class="col-md-6 mb-4">
                             <article class="card article-card article-card-sm h-100">
-                                <a href="blog/article.html">
+                                <a href="{{ url('post_detail', $post->id) }}">
                                     <div class="card-image">
-                                        <div class="post-info"> <span class="text-uppercase">03 Jun 2021</span>
-                                            <span class="text-uppercase">2 minutes read</span>
+                                        <div class="post-info"> <span class="text-uppercase">{{ date('d M Y',
+                                                strtotime($post->created_at)) }}</span>
                                         </div>
-                                        <img loading="lazy" decoding="async" src="images/{{ $post->image }}"
-                                            alt="Post Thumbnail" class="w-100">
+                                        <img src="images/{{ $post->image }}" alt="Post Thumbnail"
+                                            style="width: 400px; height: 200px;">
                                     </div>
                                 </a>
                                 <div class="card-body px-0 pb-0">
@@ -26,10 +26,11 @@
                                         </li>
                                     </ul>
                                     <h2>
-                                        <a class="post-title" href="blog/article.html">{{ $post->title }}</a>
+                                        <h2>{{ $post->title }}</h2>
                                     </h2>
-                                    <p class="card-text">{!! Str::limit($post->description) !!}</p>
-                                    <div class="content"> <a class="read-more-btn" href="blog/article.html">Read
+                                    <p class="card-text">{!! Str::limit($post->description,) !!}</p>
+                                    <div class="content">
+                                        <a class="btn read-more-btn" href="{{ url('post_detail', $post->id) }}">Read
                                             Full
                                             Article</a>
                                     </div>
@@ -47,10 +48,12 @@
                                     <div class="widget-body">
                                         <img loading="lazy" decoding="async" src="blog/images/author.jpg" alt="About Me"
                                             class="w-100 author-thumb-sm d-block">
-                                        <h2 class="widget-title my-3">Hootan Safiyari</h2>
-                                        <p class="mb-3 pb-2">Hello, I’m Hootan Safiyari. A Content writter,
-                                            Developer and Story teller. Working as a Content writter at CoolTech
-                                            Agency. Quam nihil …</p> <a href="blog/about.html"
+                                        <h2 class="widget-title my-3">Alvino Permana Putra</h2>
+                                        <p class="mb-3 pb-2">
+                                            I am a fresh graduate from Pamulang University
+                                            Faculty of computer science
+                                            Informatics Engineering</p> <a
+                                            href="https://vinopermana77.github.io/MyPortfolio/" target="blank"
                                             class="btn btn-sm btn-outline-primary">Know
                                             More</a>
                                     </div>
@@ -71,17 +74,17 @@
                                                         class="w-100">
                                                 </div>
                                                 <div class="card-body px-0 pb-1">
-                                                    <h3><a class="post-title post-title-sm"
-                                                            href="blog/article.html">Portugal and France Now
+                                                    <h3><a class="post-title post-title-sm" href="">Portugal and France
+                                                            Now
                                                             Allow Unvaccinated Tourists</a></h3>
                                                     <p class="card-text">Lorem ipsum dolor sit amet, consectetur
                                                         adipiscing elit, sed do eiusmod tempor …</p>
-                                                    <div class="content"> <a class="read-more-btn"
-                                                            href="blog/article.html">Read Full Article</a>
+                                                    <div class="content"> <a class="read-more-btn" href="">Read Full
+                                                            Article</a>
                                                     </div>
                                                 </div>
                                             </article>
-                                            <a class="media align-items-center" href="blog/article.html">
+                                            <a class="media align-items-center" href="">
                                                 <img loading="lazy" decoding="async" src="blog/images/post/post-2.jpg"
                                                     alt="Post Thumbnail" class="w-100">
                                                 <div class="media-body ml-3">
@@ -91,7 +94,7 @@
                                                         can use …</p>
                                                 </div>
                                             </a>
-                                            <a class="media align-items-center" href="blog/article.html"> <span
+                                            <a class="media align-items-center" href=""> <span
                                                     class="image-fallback image-fallback-xs">No Image
                                                     Specified</span>
                                                 <div class="media-body ml-3">
@@ -100,7 +103,7 @@
                                                         adipiscing …</p>
                                                 </div>
                                             </a>
-                                            <a class="media align-items-center" href="blog/article.html">
+                                            <a class="media align-items-center" href="">
                                                 <img loading="lazy" decoding="async" src="blog/images/post/post-5.jpg"
                                                     alt="Post Thumbnail" class="w-100">
                                                 <div class="media-body ml-3">
@@ -109,7 +112,7 @@
                                                         adipiscing …</p>
                                                 </div>
                                             </a>
-                                            <a class="media align-items-center" href="blog/article.html">
+                                            <a class="media align-items-center" href="">
                                                 <img loading="lazy" decoding="async" src="blog/images/post/post-9.jpg"
                                                     alt="Post Thumbnail" class="w-100">
                                                 <div class="media-body ml-3">
