@@ -1,3 +1,4 @@
+@include('sweetalert::alert')
 <header class="navigation">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light px-0">
@@ -11,8 +12,14 @@
                 </button>
             </div>
             <form action="#!" class="search order-lg-3 order-md-2 order-3 ml-auto">
-                <input id="search-query" name="s" type="search" placeholder="Search..." autocomplete="off">
+                <input id="search-query" name="katakunci" value="{{ Request::get('katakunci') }}" type="search"
+                    placeholder="Search..." autocomplete="off">
             </form>
+            {{-- <form class="d-flex" action="" method="get">
+                <input class="form-control me-1" type="search" name="katakunci" value="{{ Request::get('katakunci') }}"
+                    placeholder="Masukkan kata kunci" aria-label="Search">
+                <button class="btn btn-secondary" type="submit">Cari</button>
+            </form> --}}
             <div class="collapse navbar-collapse text-center order-lg-2 order-4" id="navigation">
                 <ul class="navbar-nav mx-auto mt-3 mt-lg-0">
                     <li class="nav-item"> <a class="nav-link" href="{{ route('home') }}">Home</a>
@@ -42,6 +49,9 @@
                                 <button class="dropdown-item">Log Out</button>
                             </form>
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('createPost') }}">Create Post</a>
                     </li>
                     @else
                     <li class="nav-item">

@@ -21,8 +21,11 @@ Route::get('/', [HomeController::class,'homepage']);
 // Auth admin and user
 Route::get('/home', [HomeController::class,'index'])->middleware('auth')->name('home');
 Route::get('/post_detail/{id}', [HomeController::class,'postDetail'])->name('postDetail');
+Route::get('/create_post', [HomeController::class,'createPost'])->middleware('auth')->name('createPost');
+Route::post('/user_post', [HomeController::class,'store'])->name('store');
+
 // Resource Admin
-Route::resource('/posts', AdminController::class);
+Route::resource('/posts', AdminController::class)->middleware('admin');
 
 // Setting Profile
 Route::middleware('auth')->group(function () {
