@@ -20,7 +20,7 @@
             <!-- Basic Form-->
             <div class="container-fluid">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('posts.index') }}">Index</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('index') }}">Index</a></li>
                     <li class="breadcrumb-item active">Update Post </li>
                 </ul>
                 <div class="header mt-5 mb-5 text-center text-white">
@@ -39,10 +39,8 @@
                 {{-- Notif Validation --}}
                 <div class="block">
                     <div class="block-body">
-                        <form action="{{ route('posts.update', $post->id) }}" method="POST"
-                            enctype="multipart/form-data">
+                        <form action="{{ route('update', $post->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            {{-- @method('PUT') --}}
                             <div class="mb-3">
                                 <label for="title" class="form-label">Title</label>
                                 <input type="text" class="form-control" id="title" name="title"

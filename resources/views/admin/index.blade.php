@@ -22,15 +22,25 @@
                     <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
                     <li class="breadcrumb-item active">Tables </li>
                 </ul>
-                <div class="header mt-5 mb-5 text-center text-white">
-                    <h1>Create Post</h1>
-                </div>
-                @if (session()->has('message'))
+
+                {{-- Jika Active --}}
+                @if (session()->has('active'))
                 <div class="alert alert-success">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
-                    {{session()->get('message'); }}
+                    {{session()->get('active'); }}
                 </div>
                 @endif
+                {{-- Jika Active --}}
+
+                {{-- Jika rejected --}}
+                @if (session()->has('rejected'))
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
+                    {{session()->get('rejected'); }}
+                </div>
+                @endif
+                {{-- Jika rejected --}}
+
                 <div class="row">
                     <div class="col">
                         <div class="block">
@@ -48,7 +58,8 @@
                                             <th>Author</th>
                                             <th>Status</th>
                                             <th>User Type</th>
-                                            <th>Actions</th>
+                                            <th class="text-center">Status</th>
+                                            <th class="text-center">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -64,14 +75,20 @@
                                             <td>{{$post->post_status }}</td>
                                             <td>{{$post->usertype }}</td>
                                             <td>
-                                                <div class="d-flex align-items-center">
+                                                <div class="d-flex align-items-center justify-content-around mt-3">
+                                                    <a href="{{ url('accept_post', $post->id) }}"
+                                                        class="btn btn-outline-success">Accept</a>
+                                                    <a href="{{ url('reject_post', $post->id) }}"
+                                                        class="btn btn-outline-danger">Reject</a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex align-items-center justify-content-around mt-3">
                                                     <a href="{{ url($post->id) }}" class=" btn btn-info">Show</a>
-                                                    <a href="posts/{{ $post->id }}/edit"
-                                                        class="btn btn-success m-3">Edit</i>
+                                                    <a href="edit/{{ $post->id }}" class="btn btn-success">Edit</i>
                                                     </a>
-                                                    <form action="/posts/{{ $post->id }}" method="post">
+                                                    <form action="/destroy/{{ $post->id }}" method="post">
                                                         @csrf
-                                                        @method('DELETE')
                                                         <button type="submit"
                                                             class="btn btn-danger ms-2 confirm_delete">Delete</button>
                                                     </form>

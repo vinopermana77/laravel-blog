@@ -61,7 +61,7 @@
                         {{-- Notif Validation --}}
                         <div class="block">
                             <div class="block-body">
-                                <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('userPost') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="mb-3">
                                         <label for="title" class="form-label">Title</label>

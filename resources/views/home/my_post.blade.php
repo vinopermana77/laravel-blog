@@ -30,15 +30,22 @@
                             </div>
                         </a>
                         <div class="card-body px-0 pb-0">
-                            <ul class="post-meta mb-2">
-                                <li>
-                                    <p>Author : <b>{{ $post->name }}</b></p>
-                                </li>
-                            </ul>
+                            <div class="d-flex justify-content-between">
+                                <ul class="post-meta mb-2">
+                                    <li>
+                                        <p>Author : <b>{{ $post->name }}</b></p>
+                                    </li>
+                                </ul>
+                                <ul class="post-meta mb-2">
+                                    <li>
+                                        <p>Status : <b>{{ $post->post_status }}</b></p>
+                                    </li>
+                                </ul>
+                            </div>
                             <h2>
                                 <h2>{{ $post->title }}</h2>
                             </h2>
-                            <p class="card-text">{!! Str::limit($post->description,) !!}</p>
+                            <p class="card-text">{!! Str::limit($post->description) !!}</p>
                             <div class="d-flex align-items-center justify-content-between">
                                 <a class="btn btn-info" href="{{ url('edit_post', $post->id) }}">Edit
                                 </a>

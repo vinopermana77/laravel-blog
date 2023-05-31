@@ -57,7 +57,7 @@ class AdminController extends Controller
         $post->save();
 
         Alert::success('Success', 'Post Created Successfully');
-        return redirect()->route('posts.index');
+        return redirect()->route('index');
     }
 
     /**
@@ -94,10 +94,10 @@ class AdminController extends Controller
             $post->image = $imageName;
         }
 
-        $post->save();
+        $post->update();
 
         Alert::success('Success', 'Post Updated Successfully');
-        return redirect()->route('posts.index');
+        return redirect()->route('index');
     }
 
     /**
@@ -110,5 +110,25 @@ class AdminController extends Controller
         
         Alert::success('Success', 'Post Deleted Successfully');
         return redirect()->back();
+    }
+
+    public function acceptPost($id)
+    {
+        $post = Post::find($id);
+        $post->post_status = 'active';
+        $post->save();
+
+        // Alert::success('Success', 'Post Accepted');
+        return redirect()->back()->with('active','Post Active');
+    }
+
+    public function rejectPost($id)
+    {
+        $post = Post::find($id);
+        $post->post_status = 'rejected';
+        $post->save();
+
+        // Alert::success('Success', 'Post Rejected');
+        return redirect()->back()->with('rejected','Post Rejected');
     }
 }

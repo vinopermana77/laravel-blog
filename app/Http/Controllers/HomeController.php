@@ -19,7 +19,7 @@ class HomeController extends Controller
         // Cek Kondisi
         if (Auth::id()) {
 
-            $posts = Post::paginate(4);
+            $posts = Post::where('post_status','=','active')->paginate(4);
             $users = User::all();
             $usertype=Auth()->user()->usertype;
 
@@ -43,7 +43,7 @@ class HomeController extends Controller
 
     public function homepage()
     {
-        $posts = Post::paginate(4);
+        $posts = Post::where('post_status','=','active')->paginate(4);
         return view('home.homepage', compact('posts'));
     }
 
@@ -52,7 +52,7 @@ class HomeController extends Controller
         return view('home.create_post');
     }
 
-    public function store(CreateRequest $request)
+    public function userPost(CreateRequest $request)
     {
         // Mengambil data user yang login
         $user = Auth()->user();
@@ -80,7 +80,7 @@ class HomeController extends Controller
         $post->save();
 
         Alert::success('Success', 'Post Created Successfully');
-        return redirect()->route('home');
+        return redirect()->route('myPost');
     }
 
     public function postDetail($id)
@@ -103,7 +103,7 @@ class HomeController extends Controller
         return view('home.edit_post', compact('post'));
     }
 
-    public function update(Request $request, string $id)
+    public function userUpdate(Request $request, string $id)
     {
         // Menyimpan data
         $post = Post::find($id);

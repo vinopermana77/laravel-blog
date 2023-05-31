@@ -62,7 +62,7 @@
                         {{-- Notif Validation --}}
                         <div class="block">
                             <div class="block-body">
-                                <form action="{{ route('update', $post->id) }}" method="POST"
+                                <form action="{{ route('userUpdate', $post->id) }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="mb-3">

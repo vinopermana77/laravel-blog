@@ -15,8 +15,8 @@
         <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i
                     class="icon-windows"></i>Posts</a>
             <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                <li><a href="{{ route('posts.index') }}"> <i class="fa fa-bar-chart"></i>All Posts </a></li>
-                <li><a href="{{ route('posts.create') }}"> <i class="fa fa-bar-chart"></i>Create Post </a></li>
+                <li><a href="{{ route('index') }}"> <i class="fa fa-bar-chart"></i>All Posts </a></li>
+                <li><a href="{{ route('create') }}"> <i class="fa fa-bar-chart"></i>Create Post </a></li>
             </ul>
         </li>
 </nav>
