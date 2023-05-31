@@ -16,13 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Homepage
-Route::get('/', [HomeController::class,'homepage']);
+Route::get('/', [HomeController::class,'homepage'])->name('homepage');
 
 // Auth admin and user
 Route::get('/home', [HomeController::class,'index'])->middleware('auth')->name('home');
 Route::get('/post_detail/{id}', [HomeController::class,'postDetail'])->name('postDetail');
 Route::get('/create_post', [HomeController::class,'createPost'])->middleware('auth')->name('createPost');
-Route::post('/user_post', [HomeController::class,'store'])->name('store');
+Route::post('/user_post', [HomeController::class,'store'])->middleware('auth')->name('store');
+Route::get('/my_post', [HomeController::class,'myPost'])->middleware('auth')->name('myPost');
+Route::get('/edit_post/{id}', [HomeController::class,'edit'])->middleware('auth')->name('edit');
+Route::post('/update/{id}', [HomeController::class,'update'])->middleware('auth')->name('update');
+Route::post('/destroy/{id}', [HomeController::class,'destroy'])->middleware('auth')->name('destroy');
 
 // Resource Admin
 Route::resource('/posts', AdminController::class)->middleware('admin');

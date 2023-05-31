@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <base href="/public">
     <meta charset="utf-8">
     <title>Blog - Alvino</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
@@ -44,7 +45,7 @@
     <div class="container">
         <div class="row no-gutters-lg">
             <div class="col-12">
-                <h2 class="section-title">Create Post</h2>
+                <h2 class="section-title">Update Post</h2>
                 <div class="page-content">
                     <!-- Basic Form-->
                     <div class="container-fluid">
@@ -61,21 +62,23 @@
                         {{-- Notif Validation --}}
                         <div class="block">
                             <div class="block-body">
-                                <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('update', $post->id) }}" method="POST"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     <div class="mb-3">
                                         <label for="title" class="form-label">Title</label>
-                                        <input type="text" class="form-control" id="title" name="title">
+                                        <input type="text" class="form-control" id="title" name="title"
+                                            value="{{ $post->title }}">
                                     </div>
                                     <div class="mb-3">
                                         <label for="description" class="form-label">Description</label>
                                         <textarea class="form-control" id="summernote" name="description"
-                                            rows="3"></textarea>
+                                            rows="3">{{ $post->description }}</textarea>
                                     </div>
                                     <div class="mb-3">
                                         <div class="preview">
                                             <label for="preview">Preview</label>
-                                            <img id="preview" width="200px">
+                                            <img src="images/{{ $post->image }}" id="preview" width="200px">
                                         </div>
                                     </div>
                                     <div class="mb-3">

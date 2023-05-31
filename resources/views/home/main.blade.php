@@ -1,3 +1,5 @@
+@include('sweetalert::alert')
+
 <main>
     <section class="section">
         <div class="container">

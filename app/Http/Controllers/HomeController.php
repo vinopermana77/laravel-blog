@@ -11,21 +11,15 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class HomeController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        
+        // $posts = Post::paginate(4);
+        // return view('home.homepage', compact('posts'));
+
         // Cek Kondisi
         if (Auth::id()) {
 
-            // Search
-            $katakunci = $request->katakunci;
-            if (strlen($katakunci)) {
-                $posts = Post::where('title', 'like', "%$katakunci%")->paginate(5);
-            } else {
-                $posts = Post::orderBy('name', 'asc')->paginate(4);
-            }
-            
-            $users = Post::paginate(4);
+            $posts = Post::paginate(4);
             $users = User::all();
             $usertype=Auth()->user()->usertype;
 
@@ -49,7 +43,7 @@ class HomeController extends Controller
 
     public function homepage()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(4);
         return view('home.homepage', compact('posts'));
     }
 
@@ -93,5 +87,48 @@ class HomeController extends Controller
     {
         $post = Post::find($id);
         return view('home.post_detail', compact('post'));
+    }
+
+    public function myPost()
+    {
+        $user = Auth::user();
+        $userid = $user->id;
+        $posts = Post::where('user_id','=',$userid)->get();
+        return view('home.my_post', compact('posts'));
+    }
+
+    public function edit($id)
+    {
+        $post = Post::find($id);
+        return view('home.edit_post', compact('post'));
+    }
+
+    public function update(Request $request, string $id)
+    {
+        // Menyimpan data
+        $post = Post::find($id);
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $image = $request->image;
+
+        if ($image) {
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            $post->image = $imageName;
+        }
+
+        $post->save();
+
+        Alert::success('Success', 'Post Updated Successfully');
+        return redirect()->route('myPost');
+    }
+
+    public function destroy(string $id)
+    {
+        $post = Post::find($id);
+        $post->delete();
+        
+        Alert::success('Success', 'Post Deleted Successfully');
+        return redirect()->back();
     }
 }

@@ -42,7 +42,7 @@
                         <form action="{{ route('posts.update', $post->id) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
-                            @method('PUT')
+                            {{-- @method('PUT') --}}
                             <div class="mb-3">
                                 <label for="title" class="form-label">Title</label>
                                 <input type="text" class="form-control" id="title" name="title"
