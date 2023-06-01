@@ -22,30 +22,14 @@
                     <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
                     <li class="breadcrumb-item active">Tables </li>
                 </ul>
-
-                {{-- Jika Active --}}
-                @if (session()->has('active'))
-                <div class="alert alert-success">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
-                    {{session()->get('active'); }}
-                </div>
-                @endif
-                {{-- Jika Active --}}
-
-                {{-- Jika rejected --}}
-                @if (session()->has('rejected'))
-                <div class="alert alert-danger">
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">X</button>
-                    {{session()->get('rejected'); }}
-                </div>
-                @endif
-                {{-- Jika rejected --}}
-
                 <div class="row">
                     <div class="col">
                         <div class="block">
-                            <div class="title">
-                                <strong>All data posts</strong>
+                            <div class="mb-3 col-12 col-sm-8 col-md-5">
+                                <form action="" method="GET">
+                                    <input type="search" class="form-control" name="katakunci" id="katakunci"
+                                        placeholder="Search...">
+                                </form>
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-striped table-hover">
@@ -79,12 +63,13 @@
                                                     <a href="{{ url('accept_post', $post->id) }}"
                                                         class="btn btn-outline-success">Accept</a>
                                                     <a href="{{ url('reject_post', $post->id) }}"
-                                                        class="btn btn-outline-danger">Reject</a>
+                                                        class="btn btn-outline-danger ms-2">Reject</a>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="d-flex align-items-center justify-content-around mt-3">
-                                                    <a href="{{ url($post->id) }}" class=" btn btn-info">Show</a>
+                                                    <a href="{{ url('post_detail', $post->id) }}"
+                                                        class=" btn btn-info">Show</a>
                                                     <a href="edit/{{ $post->id }}" class="btn btn-success">Edit</i>
                                                     </a>
                                                     <form action="/destroy/{{ $post->id }}" method="post">
@@ -96,9 +81,11 @@
                                             </td>
                                         </tr>
                                         @endforeach
-                                        {{-- {{ asset('storage/postImage/'.$post->image) }} --}}
                                     </tbody>
                                 </table>
+                                <div class="paginate mt-3">
+                                    {{ $posts->links('pagination::bootstrap-5') }}
+                                </div>
                             </div>
                         </div>
                     </div>

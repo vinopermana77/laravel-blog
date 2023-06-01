@@ -16,22 +16,28 @@ use App\Http\Controllers\ProfileController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 // Homepage
 Route::get('/', [HomeController::class,'homepage'])->name('homepage');
+Route::get('/aboutMe', [HomeController::class,'aboutMe'])->name('aboutMe');
+Route::get('/post_detail/{id}', [HomeController::class,'postDetail'])->name('postDetail');
+Route::get('/error', [HomeController::class,'errorPage'])->name('errorPage');
 
 // Auth admin and user
-Route::get('/home', [HomeController::class,'index'])->middleware('auth')->name('home');
-Route::get('/post_detail/{id}', [HomeController::class,'postDetail'])->name('postDetail');
-Route::get('/create_post', [HomeController::class,'createPost'])->middleware('auth')->name('createPost');
-Route::post('/user_post', [HomeController::class,'userPost'])->middleware('auth')->name('userPost');
-Route::get('/my_post', [HomeController::class,'myPost'])->middleware('auth')->name('myPost');
-Route::get('/edit_post/{id}', [HomeController::class,'edit'])->middleware('auth')->name('edit');
-Route::post('/userUpdate/{id}', [HomeController::class,'userUpdate'])->middleware('auth')->name('userUpdate');
-Route::post('/destroy/{id}', [HomeController::class,'destroy'])->middleware('auth')->name('destroy');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [HomeController::class,'index'])->middleware('auth')->name('home');
+    Route::get('/create_post', [HomeController::class,'createPost'])->middleware('auth')->name('createPost');
+    Route::post('/user_post', [HomeController::class,'userPost'])->middleware('auth')->name('userPost');
+    Route::get('/my_post', [HomeController::class,'myPost'])->middleware('auth')->name('myPost');
+    Route::get('/edit_post/{id}', [HomeController::class,'edit'])->middleware('auth')->name('edit');
+    Route::post('/userUpdate/{id}', [HomeController::class,'userUpdate'])->middleware('auth')->name('userUpdate');
+    Route::post('/destroy/{id}', [HomeController::class,'destroy'])->middleware('auth')->name('destroy');
+});
 
 // Resource Admin
 // Route::resource('/posts', AdminController::class)->middleware('admin');
 // Route::get('/accept_post', AdminController::class,'accept_post')->middleware('admin');
+
 Route::middleware(['auth','admin'])->group(
     function () {
         Route::get('/index', [AdminController::class,'index'])->name('index');

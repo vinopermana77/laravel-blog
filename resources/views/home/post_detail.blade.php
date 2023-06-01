@@ -30,7 +30,7 @@
                             </ul>
                             <h1 class="my-3">{{ $post->title }}</h1>
                             <ul class="post-meta mb-4">
-                                <li> <a href="/categories/destination">destination</a>
+                                <li> <a href="/categories/destination">Computer</a>
                                 </li>
                             </ul>
                             <div class="content text-left">

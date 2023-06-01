@@ -7,21 +7,19 @@
                         alt="Reporter Hugo">
                 </a>
                 <ul class="p-0 d-flex navbar-footer mb-0 list-unstyled">
-                    <li class="nav-item my-0"> <a class="nav-link" href="blog/about.html">About</a></li>
-                    <li class="nav-item my-0"> <a class="nav-link" href="blog/article.html">Elements</a></li>
-                    <li class="nav-item my-0"> <a class="nav-link" href="blog/privacy-policy.html">Privacy
+                    <li class="nav-item my-0"> <a class="nav-link" href="{{ route('aboutMe') }}">About</a></li>
+                    <li class="nav-item my-0"> <a class="nav-link" href="{{ route('errorPage') }}">Privacy
                             Policy</a>
                     </li>
-                    <li class="nav-item my-0"> <a class="nav-link" href="blog/terms-conditions.html">Terms
+                    <li class="nav-item my-0"> <a class="nav-link" href="{{ route('errorPage') }}">Terms
                             Conditions</a>
                     </li>
-                    <li class="nav-item my-0"> <a class="nav-link" href="blog/404.html">404 Page</a></li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="copyright bg-dark content">Designed &amp; Developed By <a
-            href="blog/https://themefisher.com/">Themefisher</a></div>
+    <div class="copyright bg-dark content">&copy; 2023 Created By Alvino Permana❤️ | Theme by Themefisher
+    </div>
 </footer>
 
 <!-- # JS Plugins -->

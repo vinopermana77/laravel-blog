@@ -12,9 +12,16 @@ class AdminController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::all();
+        $katakunci = $request->katakunci;
+        if (strlen($katakunci)) {
+            $posts = Post::where('title', 'like', "%$katakunci%")
+            ->orWhere('name', 'like', "%$katakunci%")
+            ->paginate(5);
+        } else {
+            $posts = Post::paginate(5);
+        }
         return view('admin.index', compact('posts'));
     }
 
@@ -65,7 +72,8 @@ class AdminController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $post = Post::find($id);
+        return view('home.post_detail', compact('post'));
     }
 
     /**
@@ -118,7 +126,7 @@ class AdminController extends Controller
         $post->post_status = 'active';
         $post->save();
 
-        // Alert::success('Success', 'Post Accepted');
+        Alert::success('Success', 'Post Accepted');
         return redirect()->back()->with('active','Post Active');
     }
 
@@ -128,7 +136,7 @@ class AdminController extends Controller
         $post->post_status = 'rejected';
         $post->save();
 
-        // Alert::success('Success', 'Post Rejected');
+        Alert::success('Success', 'Post Rejected');
         return redirect()->back()->with('rejected','Post Rejected');
     }
 }

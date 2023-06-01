@@ -7,24 +7,49 @@
     <section class="no-padding-bottom">
         <div class="container-fluid">
             <div class="row">
-                @foreach ($users as $user)
-                <div class="col-lg-4">
-                    <div class="user-block block text-center">
-                        <div class="avatar"><img src="adminpanel/img/avatar-1.jpg" alt="..." class="img-fluid">
-                            <div class="order dashbg-2">1st</div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="statistic-block block">
+                        <div class="progress-details d-flex align-items-end justify-content-between">
+                            <div class="title">
+                                <div class="icon"><i class="icon-user-1"></i></div><strong>User</strong>
+                            </div>
+                            <div class="number dashtext-1">{{ $users->count() }}</div>
                         </div>
-                        <a href="#" class="user-title">
-                            <h3 class="h5">{{ $user->name }}</h3><span>{{ $user->email }}</span>
-                        </a>
-                        <div class="contributions">{{ $posts->count() }} Postingan</div>
-                        <div class="details d-flex">
-                            <div class="item"><i class="icon-info"></i><strong>150</strong></div>
-                            <div class="item"><i class="fa fa-gg"></i><strong>340</strong></div>
-                            <div class="item"><i class="icon-flow-branch"></i><strong>460</strong></div>
+                        <div class="progress progress-template">
                         </div>
                     </div>
                 </div>
-                @endforeach
+                <div class="col-md-3 col-sm-6">
+                    <div class="statistic-block block">
+                        <div class="progress-details d-flex align-items-end justify-content-between">
+                            <div class="title">
+                                <div class="icon"><i class="icon-contract"></i></div><strong>Posts on blogs</strong>
+                            </div>
+                            <div class="number dashtext-2">{{ $posts->count() }}</div>
+                        </div>
+                        <div class="progress progress-template">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="no-padding-bottom">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="bar-chart block no-margin-bottom">
+                        <canvas id="barChartExample1"></canvas>
+                    </div>
+                    <div class="bar-chart block">
+                        <canvas id="barChartExample2"></canvas>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="line-cahrt block">
+                        <canvas id="lineCahrt"></canvas>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

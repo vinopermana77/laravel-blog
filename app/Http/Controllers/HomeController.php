@@ -11,15 +11,17 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // $posts = Post::paginate(4);
-        // return view('home.homepage', compact('posts'));
-
         // Cek Kondisi
         if (Auth::id()) {
-
-            $posts = Post::where('post_status','=','active')->paginate(4);
+            // Seacrh
+            $katakunci = $request->katakunci;
+            if (strlen($katakunci)) {
+                $posts = Post::where('title', 'like', "%$katakunci%")->paginate(4);
+            } else {
+                $posts = Post::where('post_status','=','active')->paginate(4);
+            }
             $users = User::all();
             $usertype=Auth()->user()->usertype;
 
@@ -41,9 +43,16 @@ class HomeController extends Controller
         }
     }
 
-    public function homepage()
+    public function homepage(Request $request)
     {
-        $posts = Post::where('post_status','=','active')->paginate(4);
+        // Search
+        $katakunci = $request->katakunci;
+        if (strlen($katakunci)) {
+            $posts = Post::where('title', 'like', "%$katakunci%")->paginate(4);
+        } else {
+            $posts = Post::where('post_status','=','active')->paginate(4);
+        }
+
         return view('home.homepage', compact('posts'));
     }
 
@@ -130,5 +139,15 @@ class HomeController extends Controller
         
         Alert::success('Success', 'Post Deleted Successfully');
         return redirect()->back();
+    }
+
+    public function aboutMe()
+    {
+        return view('home.about_me');
+    }
+
+    public function errorPage()
+    {
+        return view('home.error_page');
     }
 }

@@ -57,10 +57,9 @@
                                         <p class="mb-3 pb-2">
                                             I am a fresh graduate from Pamulang University
                                             Faculty of computer science
-                                            Informatics Engineering</p> <a
-                                            href="https://vinopermana77.github.io/MyPortfolio/" target="blank"
-                                            class="btn btn-sm btn-outline-primary">Know
-                                            More</a>
+                                            Informatics Engineering</p>
+                                        <a href="{{ route('aboutMe') }}" class="btn btn-sm btn-outline-primary">About
+                                            Me</a>
                                     </div>
                                 </div>
                             </div>
@@ -69,27 +68,38 @@
                                     <h2 class="section-title mb-3">Categories</h2>
                                     <div class="widget-body">
                                         <ul class="widget-list">
-                                            <li><a href="blog/#!">computer<span class="ml-auto">(3)</span></a>
+                                            <li><a href="{{ route('errorPage') }}">computer<span
+                                                        class="ml-auto">(3)</span></a>
                                             </li>
-                                            <li><a href="blog/#!">cruises<span class="ml-auto">(2)</span></a>
+                                            <li><a href="{{ route('errorPage') }}">cruises<span
+                                                        class="ml-auto">(2)</span></a>
                                             </li>
-                                            <li><a href="blog/#!">destination<span class="ml-auto">(1)</span></a>
+                                            <li><a href="{{ route('errorPage') }}">destination<span
+                                                        class="ml-auto">(1)</span></a>
                                             </li>
-                                            <li><a href="blog/#!">internet<span class="ml-auto">(4)</span></a>
+                                            <li><a href="{{ route('errorPage') }}">internet<span
+                                                        class="ml-auto">(4)</span></a>
                                             </li>
-                                            <li><a href="blog/#!">lifestyle<span class="ml-auto">(2)</span></a>
+                                            <li><a href="{{ route('errorPage') }}">lifestyle<span
+                                                        class="ml-auto">(2)</span></a>
                                             </li>
-                                            <li><a href="blog/#!">news<span class="ml-auto">(5)</span></a>
+                                            <li><a href="{{ route('errorPage') }}">news<span
+                                                        class="ml-auto">(5)</span></a>
                                             </li>
-                                            <li><a href="blog/#!">telephone<span class="ml-auto">(1)</span></a>
+                                            <li><a href="{{ route('errorPage') }}">telephone<span
+                                                        class="ml-auto">(1)</span></a>
                                             </li>
-                                            <li><a href="blog/#!">tips<span class="ml-auto">(1)</span></a>
+                                            <li><a href="{{ route('errorPage') }}">tips<span
+                                                        class="ml-auto">(1)</span></a>
                                             </li>
-                                            <li><a href="blog/#!">travel<span class="ml-auto">(3)</span></a>
+                                            <li><a href="{{ route('errorPage') }}">travel<span
+                                                        class="ml-auto">(3)</span></a>
                                             </li>
-                                            <li><a href="blog/#!">website<span class="ml-auto">(4)</span></a>
+                                            <li><a href="{{ route('errorPage') }}">website<span
+                                                        class="ml-auto">(4)</span></a>
                                             </li>
-                                            <li><a href="blog/#!">hugo<span class="ml-auto">(2)</span></a>
+                                            <li><a href="{{ route('errorPage') }}">hugo<span
+                                                        class="ml-auto">(2)</span></a>
                                             </li>
                                         </ul>
                                     </div>
