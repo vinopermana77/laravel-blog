@@ -17,7 +17,7 @@ class Admin
     {
         // Cek Kondisi
         // Jika login sebagai admin maka lanjutkan
-        if (Auth()->user()->usertype=='admin') {
+        if (Auth()->user()->usertype == 'admin') {
             return $next($request);
         }
 

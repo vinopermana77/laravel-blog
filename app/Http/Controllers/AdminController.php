@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
-use App\Http\Requests\CreateRequest;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminController extends Controller
@@ -17,11 +17,12 @@ class AdminController extends Controller
         $katakunci = $request->katakunci;
         if (strlen($katakunci)) {
             $posts = Post::where('title', 'like', "%$katakunci%")
-            ->orWhere('name', 'like', "%$katakunci%")
-            ->paginate(5);
+                ->orWhere('name', 'like', "%$katakunci%")
+                ->paginate(5);
         } else {
             $posts = Post::paginate(5);
         }
+
         return view('admin.index', compact('posts'));
     }
 
@@ -60,10 +61,11 @@ class AdminController extends Controller
             $request->image->move(public_path('images'), $imageName);
             $post->image = $imageName;
         }
-    
+
         $post->save();
 
         Alert::success('Success', 'Post Created Successfully');
+
         return redirect()->route('index');
     }
 
@@ -73,6 +75,7 @@ class AdminController extends Controller
     public function show(string $id)
     {
         $post = Post::find($id);
+
         return view('home.post_detail', compact('post'));
     }
 
@@ -82,6 +85,7 @@ class AdminController extends Controller
     public function edit(string $id)
     {
         $post = Post::find($id);
+
         return view('admin.edit_post', compact('post'));
     }
 
@@ -105,6 +109,7 @@ class AdminController extends Controller
         $post->update();
 
         Alert::success('Success', 'Post Updated Successfully');
+
         return redirect()->route('index');
     }
 
@@ -115,8 +120,9 @@ class AdminController extends Controller
     {
         $post = Post::find($id);
         $post->delete();
-        
+
         Alert::success('Success', 'Post Deleted Successfully');
+
         return redirect()->back();
     }
 
@@ -127,7 +133,8 @@ class AdminController extends Controller
         $post->save();
 
         Alert::success('Success', 'Post Accepted');
-        return redirect()->back()->with('active','Post Active');
+
+        return redirect()->back()->with('active', 'Post Active');
     }
 
     public function rejectPost($id)
@@ -137,6 +144,7 @@ class AdminController extends Controller
         $post->save();
 
         Alert::success('Success', 'Post Rejected');
-        return redirect()->back()->with('rejected','Post Rejected');
+
+        return redirect()->back()->with('rejected', 'Post Rejected');
     }
 }

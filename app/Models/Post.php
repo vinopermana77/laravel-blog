@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'title',
         'description',
@@ -15,6 +16,6 @@ class Post extends Model
         'post_status',
         'user_id',
         'author',
-        'usertype'
+        'usertype',
     ];
 }

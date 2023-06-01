@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateRequest;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Requests\CreateRequest;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -20,20 +20,21 @@ class HomeController extends Controller
             if (strlen($katakunci)) {
                 $posts = Post::where('title', 'like', "%$katakunci%")->paginate(4);
             } else {
-                $posts = Post::where('post_status','=','active')->paginate(4);
+                $posts = Post::where('post_status', '=', 'active')->paginate(4);
             }
             $users = User::all();
-            $usertype=Auth()->user()->usertype;
+            $usertype = Auth()->user()->usertype;
 
             // Jika login sebagai user maka tampilkan halaman dashboard
-            if ($usertype=='user') {
+            if ($usertype == 'user') {
                 return view('home.homepage', compact('posts'));
             }
             // Jika login sebagai admin maka tampilkan halaman home
-            else if ($usertype=='admin') {
+            elseif ($usertype == 'admin') {
                 $posts = Post::all();
                 $users = User::all();
-                return view('admin.adminhome', compact('posts','users'));
+
+                return view('admin.adminhome', compact('posts', 'users'));
             }
 
             // Selain itu kembali
@@ -50,7 +51,7 @@ class HomeController extends Controller
         if (strlen($katakunci)) {
             $posts = Post::where('title', 'like', "%$katakunci%")->paginate(4);
         } else {
-            $posts = Post::where('post_status','=','active')->paginate(4);
+            $posts = Post::where('post_status', '=', 'active')->paginate(4);
         }
 
         return view('home.homepage', compact('posts'));
@@ -85,16 +86,18 @@ class HomeController extends Controller
             $request->image->move(public_path('images'), $imageName);
             $post->image = $imageName;
         }
-    
+
         $post->save();
 
         Alert::success('Success', 'Post Created Successfully');
+
         return redirect()->route('myPost');
     }
 
     public function postDetail($id)
     {
         $post = Post::find($id);
+
         return view('home.post_detail', compact('post'));
     }
 
@@ -102,13 +105,15 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         $userid = $user->id;
-        $posts = Post::where('user_id','=',$userid)->get();
+        $posts = Post::where('user_id', '=', $userid)->get();
+
         return view('home.my_post', compact('posts'));
     }
 
     public function edit($id)
     {
         $post = Post::find($id);
+
         return view('home.edit_post', compact('post'));
     }
 
@@ -129,6 +134,7 @@ class HomeController extends Controller
         $post->save();
 
         Alert::success('Success', 'Post Updated Successfully');
+
         return redirect()->route('myPost');
     }
 
@@ -136,8 +142,9 @@ class HomeController extends Controller
     {
         $post = Post::find($id);
         $post->delete();
-        
+
         Alert::success('Success', 'Post Deleted Successfully');
+
         return redirect()->back();
     }
 
