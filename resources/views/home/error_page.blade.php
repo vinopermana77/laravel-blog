@@ -20,7 +20,7 @@
                         <img loading="lazy" decoding="async" src="blog/images/404.png" alt="404" class="img-fluid mb-4"
                             width="500" height="350">
                         <h1 class="mb-4">Page Not Found!</h1>
-                        <a href="{{ url('home') }}" class="btn btn-outline-primary">Back To Home</a>
+                        <a href="{{ url('/') }}" class="btn btn-outline-primary">Back To Home</a>
                     </div>
                 </div>
             </div>
